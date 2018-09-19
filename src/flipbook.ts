@@ -16,8 +16,15 @@ window.addEventListener('message', e => {
 
 	eventLogEl.appendChild(eventLogEntry);
 	eventLogEl.scrollTo(0, eventLogEl.scrollHeight);
+
+	(document.getElementById('clear-log') as HTMLButtonElement).disabled = false;
 }, false);
 
 document.addEventListener('DOMContentLoaded', e => {
 	window.parent.postMessage(IPaperIFrameEvent.READY, '*');
+});
+
+document.getElementById('clear-log').addEventListener('click', e => {
+	document.getElementById('event-log').innerHTML = '';
+	(e.target as HTMLButtonElement).disabled = true;
 });

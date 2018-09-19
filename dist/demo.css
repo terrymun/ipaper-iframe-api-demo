@@ -85,6 +85,14 @@ hr {
   border: none;
   border-top: 1px solid #999; }
 
+.event-log {
+  overflow-y: auto;
+  list-style: disc;
+  padding: 1rem;
+  padding-left: 2rem;
+  background-color: #ccc;
+  font-family: Courier, monospace; }
+
 body {
   padding: 1rem 2rem;
   background-color: #fff; }
@@ -99,4 +107,7 @@ iframe.embedded-flipbook,
 .flipbook-placeholder {
   padding: 3rem;
   background-color: rgba(70, 130, 180, 0.5); }
+
+.event-log {
+  max-height: 5rem; }
 

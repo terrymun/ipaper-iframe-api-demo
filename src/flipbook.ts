@@ -9,8 +9,6 @@ window.addEventListener('message', e => {
 		return;
 
 	logger.add(e.data);
-
-	(document.getElementById('clear-log') as HTMLButtonElement).disabled = false;
 }, false);
 
 document.addEventListener('DOMContentLoaded', e => {
@@ -19,5 +17,4 @@ document.addEventListener('DOMContentLoaded', e => {
 
 document.getElementById('clear-log').addEventListener('click', e => {
 	logger.clear();
-	(e.target as HTMLButtonElement).disabled = true;
 });

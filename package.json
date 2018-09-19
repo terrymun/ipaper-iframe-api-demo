@@ -1,0 +1,28 @@
+{
+  "name": "ipaper-api-demo",
+  "version": "1.0.0",
+  "description": "A demo for a conceptual iPaper iframe API",
+  "dependencies": {
+    "reset-css": "^4.0.1"
+  },
+  "devDependencies": {
+    "css-loader": "^1.0.0",
+    "mini-css-extract-plugin": "^0.4.3",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "ts-loader": "^5.1.1",
+    "typescript": "^3.0.3",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start:dev": "webpack-dev-server"
+  },
+  "author": "Terry Mun <hello@terrymun.com> (http://terrymun.com)",
+  "license": "ISC",
+  "private": true
+}

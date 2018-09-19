@@ -1,0 +1,20 @@
+@import '../node_modules/reset-css/sass/reset';
+@import './base';
+
+body {
+    padding: 1rem 2rem;
+    background-color: #fff;
+}
+
+iframe.embedded-flipbook,
+.flipbook-placeholder {
+    display: block;
+    width: 50vw;
+    height: 400px;
+    background-color: #ccc;
+}
+
+.flipbook-placeholder {
+    padding: 3rem;
+    background-color: rgba(steelblue, 0.5);
+}

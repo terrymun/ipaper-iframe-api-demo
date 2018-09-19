@@ -1,21 +1,14 @@
 import './flipbook.scss';
+import Logger from './framework/Logger';
 import { IPaperIFrameAction, IPaperIFrameEvent } from './typings';
 
-const eventLogEl = document.getElementById('event-log');
+const logger = new Logger('event-log');
+
 window.addEventListener('message', e => {
 	if (e.data.action === void 0)
 		return;
 
-	const action = e.data.action as IPaperIFrameAction;
-	const eventLogEntry = document.createElement('li');
-	eventLogEntry.classList.add('event-log__item');
-
-	const data = e.data;
-	data.timestamp = new Date();
-	eventLogEntry.innerHTML = JSON.stringify(data);
-
-	eventLogEl.appendChild(eventLogEntry);
-	eventLogEl.scrollTo(0, eventLogEl.scrollHeight);
+	logger.add(e.data);
 
 	(document.getElementById('clear-log') as HTMLButtonElement).disabled = false;
 }, false);
@@ -25,6 +18,6 @@ document.addEventListener('DOMContentLoaded', e => {
 });
 
 document.getElementById('clear-log').addEventListener('click', e => {
-	document.getElementById('event-log').innerHTML = '';
+	logger.clear();
 	(e.target as HTMLButtonElement).disabled = true;
 });

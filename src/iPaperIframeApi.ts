@@ -9,6 +9,7 @@ export interface IIPaperIFrameApiOptions {
 export default class IPaperIFrameAPI {
 
     private _iFramedFlipbook: HTMLIFrameElement;
+    private _readyPromise: Promise<any>;
 
     /** @constructor */
     constructor(selectorOrElement: string | HTMLIFrameElement, options?: IIPaperIFrameApiOptions) {
@@ -19,17 +20,30 @@ export default class IPaperIFrameAPI {
         else if (selectorOrElement.nodeType === Node.ELEMENT_NODE && selectorOrElement.tagName.toLowerCase() === 'iframe')
             this._iFramedFlipbook = selectorOrElement;
 
-        window.addEventListener('message', this._onMessage, false);
+        this._readyPromise = new Promise(resolve => {
+            window.addEventListener('message', (e: any) => {
+                if (e.data === IPaperIFrameEvent.READY)
+                    resolve();
+            }, false);
+        })
+    }
+
+    /** @method */
+    public ready(): Promise<any> {
+        return this._readyPromise;
+    }
+
+    /** @method */
+    public destroy(): Promise<void> {
+        return new Promise(resolve => {
+            this.getIFrameElement().remove();
+            resolve();
+        });
     }
 
     /** @method */
     public getIFrameElement(): HTMLIFrameElement {
         return this._iFramedFlipbook;
-    }
-
-    /** @method */
-    public on(eventName: string, callback: (...args: any[]) => void): void {
-        
     }
 
     /** @method */
@@ -40,6 +54,7 @@ export default class IPaperIFrameAPI {
         });
     }
 
+    /** @method */
     public addShopItem(shopItem: any): void {
         this._postMessage({
             action: IPaperIFrameAction.ADD_SHOP_ITEM,
@@ -68,11 +83,5 @@ export default class IPaperIFrameAPI {
         }
 
         this._iFramedFlipbook = iFramedFlipbook;
-    }
-
-    private _onMessage(e: any) {
-        if (e.data === IPaperIFrameEvent.READY) {
-            console.log(e);
-        }
     }
 }

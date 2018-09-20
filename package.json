@@ -20,6 +20,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
+    "watch": "webpack --watch",
     "start:dev": "webpack-dev-server"
   },
   "author": "Terry Mun <hello@terrymun.com> (http://terrymun.com)",

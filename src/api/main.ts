@@ -21,11 +21,27 @@ export default class IPaperIFrameAPI {
             this._iFramedFlipbook = selectorOrElement;
 
         this._readyPromise = new Promise(resolve => {
-            window.addEventListener('message', (e: any) => {
-                if (e.data === IPaperIFrameEvent.READY)
-                    resolve();
-            }, false);
-        })
+            function onMessage(e: any): void {
+                if (e.data !== IPaperIFrameEvent.READY)
+                    return;
+
+                window.removeEventListener('message', onMessage, false);
+                resolve();
+            }
+            window.addEventListener('message', onMessage, false);
+        });
+    }
+
+    /** @method */
+    public on(eventName: IPaperIFrameEvent, callback: (...args: any[]) => void): void {
+        window.addEventListener('message', (e: any) => {
+            // Check if messages are coming from the same iframe
+            if (e.source !== this._iFramedFlipbook.contentWindow)
+                return;
+
+            if (e.data === eventName && typeof callback === 'function')
+                callback();
+        });
     }
 
     /** @method */
@@ -36,6 +52,10 @@ export default class IPaperIFrameAPI {
     /** @method */
     public destroy(): Promise<void> {
         return new Promise(resolve => {
+            // Remove all event listeners
+
+
+            // Destroy element
             this.getIFrameElement().remove();
             resolve();
         });

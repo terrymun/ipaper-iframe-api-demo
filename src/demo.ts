@@ -1,6 +1,7 @@
 import './demo.scss';
 import Logger from './framework/Logger';
 import IPaperIFrameAPI from './api/main';
+import { IPaperIFrameEvent } from './api/typings';
 
 // Create a hash of all API instances so that our action buttons can access them by ID
 const embeddedIframes = {
@@ -19,9 +20,10 @@ const loggers = {
  * The API uses the ID parameter with no supplied options, e.g.:
  * new IPaperIFrameAPI('flipbook1');
  */
-embeddedIframes.flipbook1.ready().then(() => {
-	loggers.flipbook1.add({ event: 'Embedded flipbook has triggered DOMready' })
-});
+// Bind events
+embeddedIframes.flipbook1.ready().then(() => loggers.flipbook1.add({ event: 'Embedded flipbook has triggered DOMready' }));
+embeddedIframes.flipbook1.on(IPaperIFrameEvent.AFTER_PAGE_CHANGE, () => loggers.flipbook1.add({ event: IPaperIFrameEvent.AFTER_PAGE_CHANGE }));
+embeddedIframes.flipbook1.on(IPaperIFrameEvent.AFTER_SHOP_ITEM_ADDED, () => loggers.flipbook1.add({ event: IPaperIFrameEvent.AFTER_SHOP_ITEM_ADDED }));
 
 /*
  * Example 2: Dynamically create new <iframe> based on supplied ID of a placeholder element and a URL
@@ -32,9 +34,11 @@ embeddedIframes.flipbook1.ready().then(() => {
 document.getElementById('instantiate-embedded-flipbook').addEventListener('click', e => {
 	embeddedIframes.flipbook2 = new IPaperIFrameAPI('flipbook2', { url: './embedded/flipbook.html' });
 	document.getElementById('flipbook2-actions').style.display = 'block';
-	embeddedIframes.flipbook2.ready().then(() => {
-		loggers.flipbook2.add({ event: 'Embedded flipbook has triggered DOMready' })
-	});
+
+	// Bind events
+	embeddedIframes.flipbook2.ready().then(() => loggers.flipbook2.add({ event: 'Embedded flipbook has triggered DOMready' }));
+	embeddedIframes.flipbook2.on(IPaperIFrameEvent.AFTER_PAGE_CHANGE, () => loggers.flipbook2.add({ event: IPaperIFrameEvent.AFTER_PAGE_CHANGE }));
+	embeddedIframes.flipbook2.on(IPaperIFrameEvent.AFTER_SHOP_ITEM_ADDED, () => loggers.flipbook2.add({ event: IPaperIFrameEvent.AFTER_SHOP_ITEM_ADDED }));
 	
 	(e.target as HTMLButtonElement).disabled = true;
 	(document.getElementById('destroy-embedded-flipbook') as HTMLButtonElement).disabled = false;

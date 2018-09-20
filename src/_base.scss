@@ -26,13 +26,23 @@ p {
     margin-bottom: 1.5rem;
 }
 
+pre {
+    display: block;
+    margin-bottom: 1rem;
+}
+
 code {
     display: inline-block;
     border-radius: 3px;
     border: 1px solid #ccc;
-    padding: .1em .25em;
+    padding: .1rem .25rem;
     background-color: rgba(#fff, .85);
     font-family: Courier, monospace;
+}
+
+pre code {
+    padding: .5rem 1rem;
+    background-color: rgba(#999,.125);
 }
 
 hr {
@@ -46,6 +56,6 @@ hr {
     list-style: disc;
     padding: 1rem;
     padding-left: 2rem;
-    background-color: #ccc;
+    background-color: rgba(#e4b143, .25);
     font-family: Courier, monospace;
 }

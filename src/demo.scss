@@ -11,6 +11,7 @@ iframe.embedded-flipbook,
     display: block;
     width: 50vw;
     height: 400px;
+    margin-bottom: 1rem;
     background-color: #ccc;
 }
 
@@ -21,4 +22,31 @@ iframe.embedded-flipbook,
 
 .event-log {
     max-height: 5rem;
+}
+
+.form {
+    border: 1px solid #ccc;
+    padding: 1rem;
+}
+.form__control-group {
+    display: flex;
+    align-items: top;
+    margin-bottom: 1rem;
+
+    &:last-child { margin-bottom: 0; }
+}
+.form__action {
+    width: 8rem;
+    margin-right: 1rem;
+    padding: .5rem;
+    border: 0;
+    background-color: rgba(#4caf50, .25);
+    cursor: pointer;
+}
+.form__control {
+    padding: .5rem;
+    width: 100%;
+}
+.form__control--textarea {
+    height: 6rem;
 }

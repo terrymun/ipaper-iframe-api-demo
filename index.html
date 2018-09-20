@@ -6,21 +6,25 @@
 </head>
 <body>
 	<h1>iPaper IFrame API test page</h1>
-	<h2>Embedded flipbook in DOM</h2>
+	<h2>Example 1: Embedded flipbook in DOM</h2>
 	<p>The flipbook below is embedded as an <code>iframe</code> in the DOM. A new instance of the API is instantiated using this element.</p>
 	<iframe id="flipbook1" class="embedded-flipbook" src="./embedded/flipbook.html"></iframe>
-	<form action="#" type="get">
-		<button type="button" class="action--go-to-page" data-target="flipbook1">Go to page</button>
-		<input type="number" class="action--go-to-page__value" data-target="flipbook1" value="4" placeholder="4" />
-		<br />
-		<button type="button" class="action--add-shop-item" data-target="flipbook1">Add shop item</button>
-		<textarea class="action--add-shop-item__value" data-target="flipbook1">{
-	"title": "My product",
-	"description": "Product description",
-	"productID": "PROD-25B",
-	"price": "29.95",
-	"originPage": 6
+	<form action="#" type="get" class="form">
+		<div class="form__control-group">
+			<button type="button" class="form__action action--go-to-page" data-target="flipbook1">Go to page</button>
+			<input type="number" class="form__control action--go-to-page__value" data-target="flipbook1" value="4" placeholder="4" />
+		</div>
+		
+		<div class="form__control-group">
+			<button type="button" class="form__action action--add-shop-item" data-target="flipbook1">Add shop item</button>
+			<textarea class="form__control form__control--textarea action--add-shop-item__value" data-target="flipbook1">{
+    "title": "My product",
+    "description": "Product description",
+    "productID": "PROD-25B",
+    "price": "29.95",
+    "originPage": 6
 }</textarea>
+		</div>
 
 		<p>Events emitted from embedded flipbook:</p>
 		<ul class="event-log" id="logger1"></ul>
@@ -28,7 +32,7 @@
 
 	<hr />
 	
-	<h2>Embedded flipbook instantiated at runtime</h2>
+	<h2>Example 2: Embedded flipbook instantiated programmatically</h2>
 	<p>The flipbook below is not present in the DOM, but is actually injected dynamically using the provisional API. Example usage:</p>
 	<pre><code>&lt;div id=&quot;flipbook2&quot;&gt;Placeholder text&lt;/div&gt;</code></pre>
 	<pre><code>new IPaperIFrameAPI('flipbook2', {
@@ -38,17 +42,21 @@
 	<button type="button" id="destroy-embedded-flipbook" disabled>Destroy iframed flipbook</button>
 	<div id="flipbook2" class="flipbook-placeholder">Placeholder</div>
 	<form action="#" type="get" id="flipbook2-actions" style="display: none;">
-		<button type="button" class="action--go-to-page" data-target="flipbook2">Go to page</button>
-		<input type="number" class="action--go-to-page__value" data-target="flipbook2" value="4" placeholder="4" />
-		<br />
-		<button type="button" class="action--add-shop-item" data-target="flipbook2">Add shop item</button>
-		<textarea class="action--add-shop-item__value" data-target="flipbook2">{
+		<div class="form__control-group">
+			<button type="button" class="form__action action--go-to-page" data-target="flipbook2">Go to page</button>
+			<input type="number" class="form__control action--go-to-page__value" data-target="flipbook2" value="4" placeholder="4" />
+		</div>
+		
+		<div class="form__control-group">
+			<button type="button" class="form__action action--add-shop-item" data-target="flipbook2">Add shop item</button>
+			<textarea class="form__control form__control--textarea action--add-shop-item__value" data-target="flipbook2">{
     "title": "My product",
     "description": "Product description",
     "productID": "PROD-25B",
     "price": "29.95",
     "originPage": 6
 }</textarea>
+		</div>
 
 		<p>Events emitted from embedded flipbook:</p>
 		<ul class="event-log" id="logger2"></ul>

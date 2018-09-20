@@ -29,8 +29,17 @@ export interface IPaperIFrameEventData {
 	data?: any
 }
 
-/** @interface */
-export interface IPaperIFrameActionData {
-	action: IPaperIFrameAction,
-	data: IPaperIFrameAddShopItemData | IPaperIFrameGoToPageData
+/** @type */
+type IPaperIFrameAddShopItem = {
+	action: IPaperIFrameAction.ADD_SHOP_ITEM,
+	data: IPaperIFrameAddShopItemData
 }
+
+/** @type */
+type IPaperIFrameGoToPage = {
+	action: IPaperIFrameAction.GO_TO_PAGE,
+	data: IPaperIFrameGoToPageData
+}
+
+/** @type */
+export type IPaperIFrameActionData = IPaperIFrameAddShopItem | IPaperIFrameGoToPage;

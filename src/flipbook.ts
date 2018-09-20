@@ -28,11 +28,12 @@ window.addEventListener('message', e => {
 	if (e.data.action === void 0)
 		return;
 	
-	const apiAction = e.data.action as IPaperIFrameAction;
-	const apiPayload = e.data.data as IPaperIFrameActionData;
-	switch(apiAction) {
+	const eventData = e.data as IPaperIFrameActionData;
+	const apiAction = eventData.action;
+
+	switch(eventData.action) {
 		case IPaperIFrameAction.ADD_SHOP_ITEM:
-			shopBasket.push(apiPayload as any as IPaperIFrameAddShopItemData);
+			shopBasket.push(eventData.data);
 			emitEvent({
 				eventName: IPaperIFrameEvent.AFTER_SHOP_ITEM_ADDED,
 				data: {
@@ -45,7 +46,7 @@ window.addEventListener('message', e => {
 		// Here we simulate a delay
 		case IPaperIFrameAction.GO_TO_PAGE:
 			window.setTimeout(() => {
-				currentPageNumber = apiPayload as any as IPaperIFrameGoToPageData;
+				currentPageNumber = eventData.data;
 				emitEvent({
 					eventName: IPaperIFrameEvent.AFTER_PAGE_CHANGE,
 					data: {

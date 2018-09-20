@@ -1,4 +1,5 @@
 import './demo.scss';
+import '@babel/polyfill';
 import Logger from './framework/Logger';
 import IPaperIFrameAPI from './api/main';
 import { IPaperIFrameEvent } from './api/typings';

@@ -3,9 +3,16 @@
   "version": "1.0.0",
   "description": "A demo for a conceptual iPaper iframe API",
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "reset-css": "^4.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/runtime": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "bable-loader": "0.0.1-security",
     "css-loader": "^1.0.0",
     "mini-css-extract-plugin": "^0.4.3",
     "node-sass": "^4.9.3",

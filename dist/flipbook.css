@@ -72,13 +72,21 @@ h2 {
 p {
   margin-bottom: 1.5rem; }
 
+pre {
+  display: block;
+  margin-bottom: 1rem; }
+
 code {
   display: inline-block;
   border-radius: 3px;
   border: 1px solid #ccc;
-  padding: .1em .25em;
+  padding: .1rem .25rem;
   background-color: rgba(255, 255, 255, 0.85);
   font-family: Courier, monospace; }
+
+pre code {
+  padding: .5rem 1rem;
+  background-color: rgba(153, 153, 153, 0.125); }
 
 hr {
   margin: 1.5rem 0;
@@ -90,7 +98,7 @@ hr {
   list-style: disc;
   padding: 1rem;
   padding-left: 2rem;
-  background-color: #ccc;
+  background-color: rgba(228, 177, 67, 0.25);
   font-family: Courier, monospace; }
 
 body {

@@ -22,8 +22,8 @@ const loggers = {
  */
 // Bind events
 embeddedIframes.flipbook1.ready().then(() => loggers.flipbook1.add({ event: 'Embedded flipbook has triggered DOMready' }));
-embeddedIframes.flipbook1.on(IPaperIFrameEvent.AFTER_PAGE_CHANGE, () => loggers.flipbook1.add({ event: IPaperIFrameEvent.AFTER_PAGE_CHANGE }));
-embeddedIframes.flipbook1.on(IPaperIFrameEvent.AFTER_SHOP_ITEM_ADDED, () => loggers.flipbook1.add({ event: IPaperIFrameEvent.AFTER_SHOP_ITEM_ADDED }));
+embeddedIframes.flipbook1.on(IPaperIFrameEvent.AFTER_PAGE_CHANGE, data => loggers.flipbook1.add(data));
+embeddedIframes.flipbook1.on(IPaperIFrameEvent.AFTER_SHOP_ITEM_ADDED, data => loggers.flipbook1.add(data));
 
 /*
  * Example 2: Dynamically create new <iframe> based on supplied ID of a placeholder element and a URL
@@ -37,8 +37,8 @@ document.getElementById('instantiate-embedded-flipbook').addEventListener('click
 
 	// Bind events
 	embeddedIframes.flipbook2.ready().then(() => loggers.flipbook2.add({ event: 'Embedded flipbook has triggered DOMready' }));
-	embeddedIframes.flipbook2.on(IPaperIFrameEvent.AFTER_PAGE_CHANGE, () => loggers.flipbook2.add({ event: IPaperIFrameEvent.AFTER_PAGE_CHANGE }));
-	embeddedIframes.flipbook2.on(IPaperIFrameEvent.AFTER_SHOP_ITEM_ADDED, () => loggers.flipbook2.add({ event: IPaperIFrameEvent.AFTER_SHOP_ITEM_ADDED }));
+	embeddedIframes.flipbook2.on(IPaperIFrameEvent.AFTER_PAGE_CHANGE, data => loggers.flipbook2.add(data));
+	embeddedIframes.flipbook2.on(IPaperIFrameEvent.AFTER_SHOP_ITEM_ADDED, data => loggers.flipbook2.add(data));
 	
 	(e.target as HTMLButtonElement).disabled = true;
 	(document.getElementById('destroy-embedded-flipbook') as HTMLButtonElement).disabled = false;

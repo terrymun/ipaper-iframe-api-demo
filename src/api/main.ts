@@ -1,4 +1,4 @@
-import { IPaperIFrameAction, IPaperIFrameEvent } from './typings';
+import { IPaperIFrameAction, IPaperIFrameEvent, IPaperIFrameEventData } from './typings';
 
 /** @interface */
 export interface IIPaperIFrameApiOptions {
@@ -39,8 +39,10 @@ export default class IPaperIFrameAPI {
             if (e.source !== this._iFramedFlipbook.contentWindow)
                 return;
 
-            if (e.data === eventName && typeof callback === 'function')
-                callback();
+            const eventData = e.data as IPaperIFrameEventData;
+
+            if (eventData.eventName === eventName && typeof callback === 'function')
+                callback(eventData.data);
         });
     }
 

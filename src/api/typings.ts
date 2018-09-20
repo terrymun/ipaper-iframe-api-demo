@@ -12,7 +12,7 @@ export enum IPaperIFrameEvent {
 }
 
 /** @type */
-export type IPaperIFrameApiAddShopItemPayload = {
+export type IPaperIFrameAddShopItemData = {
 	title: string,
 	description: string,
 	productId: string,
@@ -21,10 +21,16 @@ export type IPaperIFrameApiAddShopItemPayload = {
 }
 
 /** @type */
-export type IPaperIFrameApiGoToPagePayload = number;
+export type IPaperIFrameGoToPageData = number;
+
+/** @interface */
+export interface IPaperIFrameEventData {
+	eventName: IPaperIFrameEvent,
+	data?: any
+}
 
 /** @interface */
 export interface IPaperIFrameActionData {
 	action: IPaperIFrameAction,
-	data: IPaperIFrameApiAddShopItemPayload | IPaperIFrameApiGoToPagePayload
+	data: IPaperIFrameAddShopItemData | IPaperIFrameGoToPageData
 }

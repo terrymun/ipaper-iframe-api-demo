@@ -1,6 +1,6 @@
 import './flipbook.scss';
 import Logger from './framework/Logger';
-import { IPaperIFrameAction, IPaperIFrameEvent } from './typings';
+import { IPaperIFrameAction, IPaperIFrameEvent } from './api/typings';
 
 const logger = new Logger('event-log');
 
